@@ -1,52 +1,37 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
 <meta charset="UTF-8">
+<title>Culonas</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Video Pre-Roll</title>
+
 <style>
 body {
   margin: 0;
   background: black;
-  font-family: Arial, sans-serif;
   text-align: center;
-  color: white;
 }
 
-/* Contenedor del anuncio */
-#ad-container {
+/* CONTENEDOR DEL VIDEO DE ANUNCIO */
+#ad-video-container {
   width: 90%;
-  max-width: 80px;       /* MAXIMO ANCHO DEL ANUNCIO */
-  margin: 30px auto 10px auto;
+  max-width: 800px;     /* ancho máximo del anuncio */
+  margin: 30px auto;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 0 20px rgba(0,0,0,0.5);
 }
 
-/* Ajuste de iframe dentro del contenedor */
-#ad-container iframe {
+/* LIMITAR EL TAMAÑO DEL IFRAME DEL ANUNCIO */
+#ad-video-container iframe {
   width: 100% !important;
   height: auto !important;
-  max-height: 200px; /* CAMBIA ESTE VALOR SI QUIERES MAS O MENOS ALTO */
+  max-height: 200px;    /* altura máxima del anuncio */
   display: block;
   margin: 0 auto;
 }
 
-/* Botón "Saltar" */
-#skip-btn {
-  display: none;
-  padding: 12px 25px;
-  margin: 15px auto;
-  cursor: pointer;
-  background: #ff0;
-  color: #000;
-  font-weight: bold;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-}
-
-/* Contenedor del video real */
+/* VIDEO REAL */
 #main-video {
   display: none;
   width: 90%;
@@ -60,52 +45,38 @@ body {
 #main-video iframe {
   width: 100%;
   height: 0;
-  padding-bottom: 56.25%; /* Relación 16:9 */
+  padding-bottom: 56.25%; /* relación 16:9 */
   border: 0;
 }
 </style>
 </head>
+
 <body>
 
-<h2>Tu video comenzará pronto...</h2>
-
-<!-- CONTENEDOR DEL ANUNCIO -->
-<div id="ad-container">
-<script src="https://pl28717030.effectivegatecpm.com/fb/7a/59/fb7a59c56da9f22fc4e470cd90f2af9c.js"></script>
+<!-- VIDEO ANUNCIO -->
+<div id="ad-video-container">
+  <!-- 🔴 AQUÍ YA PUSISTE TU CÓDIGO DE ADSTERRA -->
+  <script type="text/javascript" src="TU-CODIGO-DE-ADSTERRA.js"></script>
 </div>
 
-<!-- BOTÓN "SALTAR" -->
-<button id="skip-btn" onclick="goToVideo()">Saltar anuncio</button>
-
-<!-- CONTENEDOR VIDEO REAL -->
+<!-- VIDEO REAL -->
 <div id="main-video">
   <iframe 
-    https://myvidplay.com/e/sj0h0xyiabdk
+    src="https://myvidplay.com/e/sj0h0xyiabdk"
+    frameborder="0"
     allowfullscreen>
   </iframe>
 </div>
 
 <script>
-const skipBtn = document.getElementById("skip-btn");
-const adContainer = document.getElementById("ad-container");
+const adContainer = document.getElementById("ad-video-container");
 const mainVideo = document.getElementById("main-video");
 
-// Temporizador 5 segundos
-let countdown = 5;
-const timer = setInterval(() => {
-  countdown--;
-  if(countdown <= 0){
-    clearInterval(timer);
-    skipBtn.style.display = "inline-block"; // Muestra botón
-  }
-}, 1000);
-
-// Función al pulsar "Saltar"
-function goToVideo(){
-  adContainer.style.display = "none"; // Oculta anuncio
-  skipBtn.style.display = "none";     // Oculta botón
-  mainVideo.style.display = "block";   // Muestra video real
-}
+// Opcional: mostrar video real después de un tiempo automático (si quieres 5 seg)
+// setTimeout(() => {
+//   adContainer.style.display = "none";
+//   mainVideo.style.display = "block";
+// }, 5000);
 </script>
 
 </body>
