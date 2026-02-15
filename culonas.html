@@ -3,80 +3,52 @@
 <head>
 <meta charset="UTF-8">
 <title>Culonas</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <style>
 body {
   margin: 0;
   background: black;
-  text-align: center;
 }
 
-/* CONTENEDOR DEL VIDEO DE ANUNCIO */
-#ad-video-container {
-  width: 90%;
-  max-width: 800px;     /* ancho máximo del anuncio */
-  margin: 30px auto;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 0 20px rgba(0,0,0,0.5);
-}
-
-/* LIMITAR EL TAMAÑO DEL IFRAME DEL ANUNCIO */
-#ad-video-container iframe {
-  width: 100% !important;
-  height: auto !important;
-  max-height: 200px;    /* altura máxima del anuncio */
-  display: block;
-  margin: 0 auto;
-}
-
-/* VIDEO REAL */
 #main-video {
   display: none;
-  width: 90%;
-  max-width: 800px;
-  margin: 20px auto;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
-#main-video iframe {
+#ad-video {
+  position: absolute;
   width: 100%;
-  height: 0;
-  padding-bottom: 56.25%; /* relación 16:9 */
-  border: 0;
+  height: 100%;
+  object-fit: cover;
 }
 </style>
 </head>
-
 <body>
 
 <!-- VIDEO ANUNCIO -->
-<div id="ad-video-container">
-  <!-- 🔴 AQUÍ YA PUSISTE TU CÓDIGO DE ADSTERRA -->
-  <script type="text/javascript" src="TU-CODIGO-DE-ADSTERRA.js"></script>
-</div>
+<video id="ad-video" autoplay muted>
+  <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+</video>
 
 <!-- VIDEO REAL -->
 <div id="main-video">
   <iframe 
-    src="https://myvidplay.com/e/sj0h0xyiabdk"
-    frameborder="0"
+    src="https://myvidplay.com/e/sj0h0xyiabdk" 
+    width="100%" 
+    height="100%" 
+    frameborder="0" 
     allowfullscreen>
   </iframe>
 </div>
 
 <script>
-const adContainer = document.getElementById("ad-video-container");
-const mainVideo = document.getElementById("main-video");
+let adVideo = document.getElementById("ad-video");
 
-// Opcional: mostrar video real después de un tiempo automático (si quieres 5 seg)
-// setTimeout(() => {
-//   adContainer.style.display = "none";
-//   mainVideo.style.display = "block";
-// }, 5000);
+adVideo.onended = function() {
+  adVideo.style.display = "none";
+  document.getElementById("main-video").style.display = "block";
+};
 </script>
 
 </body>
