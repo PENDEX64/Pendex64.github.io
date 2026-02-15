@@ -13,24 +13,26 @@ body {
   color: white;
 }
 
-/* Contenedor del video de anuncio */
+/* Contenedor del anuncio */
 #ad-container {
   width: 90%;
-  max-width: 800px;
+  max-width: 800px;       /* MAXIMO ANCHO DEL ANUNCIO */
   margin: 30px auto 10px auto;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 0 20px rgba(0,0,0,0.5);
 }
 
-/* Video de anuncio */
-#ad-video {
-  width: 100%;
-  height: auto;
+/* Ajuste de iframe dentro del contenedor */
+#ad-container iframe {
+  width: 100% !important;
+  height: auto !important;
+  max-height: 200px; /* CAMBIA ESTE VALOR SI QUIERES MAS O MENOS ALTO */
   display: block;
+  margin: 0 auto;
 }
 
-/* Botón saltar */
+/* Botón "Saltar" */
 #skip-btn {
   display: none;
   padding: 12px 25px;
@@ -44,7 +46,7 @@ body {
   font-size: 16px;
 }
 
-/* Contenedor video real */
+/* Contenedor del video real */
 #main-video {
   display: none;
   width: 90%;
@@ -67,19 +69,19 @@ body {
 
 <h2>Tu video comenzará pronto...</h2>
 
-<!-- Contenedor del anuncio -->
+<!-- CONTENEDOR DEL ANUNCIO -->
 <div id="ad-container">
-  <!-- CAMBIA ESTO: Pega el CÓDIGO DE ADSTERRA de tu unidad de anuncio -->
+  <!-- 🔴 CAMBIA ESTO: PEGAR TU CÓDIGO DE ADSTERRA AQUÍ -->
   <script type="text/javascript" src="TU-CODIGO-DE-ADSTERRA.js"></script>
 </div>
 
-<!-- Botón saltar -->
+<!-- BOTÓN "SALTAR" -->
 <button id="skip-btn" onclick="goToVideo()">Saltar anuncio</button>
 
-<!-- Contenedor del video real -->
+<!-- CONTENEDOR VIDEO REAL -->
 <div id="main-video">
   <iframe 
-    src="TU-VIDEO-REAL.HTML_O_IFRAME" 
+    src="TU-VIDEO-REAL.HTML_O_IFRAME"  <!-- 🔴 CAMBIA ESTO: PON TU VIDEO REAL -->
     allowfullscreen>
   </iframe>
 </div>
@@ -89,7 +91,7 @@ const skipBtn = document.getElementById("skip-btn");
 const adContainer = document.getElementById("ad-container");
 const mainVideo = document.getElementById("main-video");
 
-// Temporizador 5 segundos para mostrar botón "Saltar"
+// Temporizador 5 segundos
 let countdown = 5;
 const timer = setInterval(() => {
   countdown--;
