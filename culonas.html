@@ -1,56 +1,110 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Culonas</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video Pre-Roll</title>
 <style>
 body {
   margin: 0;
   background: black;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  color: white;
 }
 
+/* Contenedor del video de anuncio */
+#ad-container {
+  width: 90%;
+  max-width: 800px;
+  margin: 30px auto 10px auto;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+/* Video de anuncio */
+#ad-video {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Botón saltar */
+#skip-btn {
+  display: none;
+  padding: 12px 25px;
+  margin: 15px auto;
+  cursor: pointer;
+  background: #ff0;
+  color: #000;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+/* Contenedor video real */
 #main-video {
   display: none;
-  position: absolute;
-  width: 100%;
-  height: 100%;
+  width: 90%;
+  max-width: 800px;
+  margin: 20px auto;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
 }
 
-#ad-video {
-  position: absolute;
+#main-video iframe {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: 0;
+  padding-bottom: 56.25%; /* Relación 16:9 */
+  border: 0;
 }
 </style>
 </head>
-
 <body>
 
-<!-- VIDEO ANUNCIO -->
-<video id="ad-video" autoplay muted>
-  <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-</video>
+<h2>Tu video comenzará pronto...</h2>
 
-<!-- VIDEO REAL -->
+<!-- Contenedor del anuncio -->
+<div id="ad-container">
+  <!-- CAMBIA ESTO: Pega el CÓDIGO DE ADSTERRA de tu unidad de anuncio -->
+  <script type="text/javascript" src="TU-CODIGO-DE-ADSTERRA.js"></script>
+</div>
+
+<!-- Botón saltar -->
+<button id="skip-btn" onclick="goToVideo()">Saltar anuncio</button>
+
+<!-- Contenedor del video real -->
 <div id="main-video">
   <iframe 
-    src="https://myvidplay.com/e/sj0h0xyiabdk"
-    width="100%" 
-    height="100%" 
-    frameborder="0"
+    src="TU-VIDEO-REAL.HTML_O_IFRAME" 
     allowfullscreen>
   </iframe>
 </div>
 
 <script>
-let adVideo = document.getElementById("ad-video");
+const skipBtn = document.getElementById("skip-btn");
+const adContainer = document.getElementById("ad-container");
+const mainVideo = document.getElementById("main-video");
 
-adVideo.onended = function() {
-  adVideo.style.display = "none";
-  document.getElementById("main-video").style.display = "block";
-};
+// Temporizador 5 segundos para mostrar botón "Saltar"
+let countdown = 5;
+const timer = setInterval(() => {
+  countdown--;
+  if(countdown <= 0){
+    clearInterval(timer);
+    skipBtn.style.display = "inline-block"; // Muestra botón
+  }
+}, 1000);
+
+// Función al pulsar "Saltar"
+function goToVideo(){
+  adContainer.style.display = "none"; // Oculta anuncio
+  skipBtn.style.display = "none";     // Oculta botón
+  mainVideo.style.display = "block";   // Muestra video real
+}
 </script>
 
 </body>
