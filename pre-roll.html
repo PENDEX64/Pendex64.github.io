@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Pre-roll Adsterra</title>
+<style>
+body { text-align:center; font-family: Arial; background:black; color:white; margin:0; padding:0; }
+#ad-container { width: 728px; height: 90px; margin:50px auto; background:#222; }
+#skip-btn { display:none; padding:10px 20px; margin-top:20px; cursor:pointer; background:#ff0; color:#000; font-weight:bold; border:none; border-radius:5px;}
+h2 { margin-top:50px; }
+</style>
+</head>
+<body>
+
+<h2>Tu video comenzará pronto...</h2>
+
+<div id="ad-container">
+  <script src="https://pl28717030.effectivegatecpm.com/fb/7a/59/fb7a59c56da9f22fc4e470cd90f2af9c.js"></script>
+</div>
+
+<button id="skip-btn" onclick="goToVideo()">Saltar anuncio</button>
+
+<script>
+let countdown = 5; // Duración del anuncio en segundos
+const btn = document.getElementById('skip-btn');
+
+const timer = setInterval(() => {
+  countdown--;
+  if(countdown <= 0){
+    clearInterval(timer);
+    btn.style.display = 'inline-block'; // Muestra el botón "Saltar"
+  }
+}, 1000);
+
+function goToVideo(){
+  // CAMBIA ESTO: PON EL NOMBRE DE TU VIDEO REAL
+  window.location.href = 'culonas.html';
+}
+</script>
+
+</body>
+</html>
